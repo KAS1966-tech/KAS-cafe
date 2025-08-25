@@ -208,7 +208,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem(LS_THEME);
     if (savedTheme) {
         document.documentElement.setAttribute("data-theme", savedTheme);
-        themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+        themeToggle.innerHTML = savedTheme === "dark"
+            ? '<i class="ri-sun-line"></i>'
+            : '<i class="ri-moon-fill"></i>';
+
     }
 
     const saved = localStorage.getItem(LS_ORDER);
@@ -275,7 +278,9 @@ themeToggle.addEventListener("click", () => {
     const next = cur === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem(LS_THEME, next);
-    themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
+    themeToggle.innerHTML = next === "dark"
+        ? '<i class="ri-sun-line"></i>'
+        : '<i class="ri-moon-foggy-fill"></i>';
 });
 
 // discount validation feedback
