@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KAS Cafe — Order History</title>
+    <link rel="stylesheet" href="history.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="brand">
+            <h1>Order History</h1>
+            <p>Saved on this device</p>
+        </div>
+        <div class="actions">
+            <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <a class="btn ghost" href="main.html">Back to Order</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <div class="topbar">
+                <input id="historySearch" class="search" type="search" placeholder="Search by name or item" />
+                <div class="btn-row">
+                    <button class="btn" id="exportBtn">Export JSON</button>
+                    <button class="btn ghost" id="clearAllBtn">Delete History</button>
+                </div>
+            </div>
+
+            <div id="historyList" class="history-list"></div>
+            <p id="emptyMsg" class="muted hidden">No history saved on this device.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Data is stored locally. Clear anytime.</p>
+    </footer>
+
+    <script src="history.js"></script>
+</body>
+
+</html>

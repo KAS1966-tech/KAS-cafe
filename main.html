@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KAS Cafe — Order Now</title>
+    <link rel="stylesheet" href="main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="brand">
+            <h1>KAS Cafe<i class="ri-building-2-fill"></i></h1>
+            <p>Your Daily Dose of Freshness<i class="ri-leaf-line"></i></p>
+        </div>
+        <div class="actions">
+            <button id="themeToggle" aria-label="Toggle theme"><i class="ri-moon-line"></i></button>
+            <a class="btn ghost" href="history.html" id="historyBtn"><i class="ri-history-fill"></i> History</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <form id="orderForm" autocomplete="on" class="card">
+            <h2><i class="ri-order-play-fill"></i>Place Your Order</h2>
+
+            <div class="grid two">
+                <div class="form-group">
+                    <label for="customerName">Your Name<i class="ri-user-3-line"></i></label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="customerContact"><i class="ri-phone-line"></i>Contact Number</label>
+                    <input type="tel" id="customerContact" name="customerContact"
+                        placeholder="03XXXXXXXXX or +92XXXXXXXXXX" pattern="(\+92\d{10}|03\d{9})" required />
+                </div>
+            </div>
+
+            <div class="switch-line">
+                <label for="isDelivery" class="switch">
+                    <input type="checkbox" id="isDelivery" />
+                    <span class="slider"></span>
+                </label>
+                <span>Delivery?<i class="ri-truck-line"></i></span>
+            </div>
+
+            <div id="deliveryFields" class="collapse">
+                <div class="grid two">
+                    <div class="form-group">
+                        <label for="deliveryAddress">Delivery Address<i class="ri-home-smile-fill"></i></label>
+                        <input type="text" id="deliveryAddress" placeholder="Street, area, city">
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryNote">Delivery Note <i class="fa-notdog fa-solid fa-thumbtack"></i></label>
+                        <input type="text" id="deliveryNote" placeholder="Landmark / instructions">
+                    </div>
+                </div>
+                <div class="grid two">
+                    <div class="form-group">
+                        <label for="deliveryTime">Preferred Time</label>
+                        <input type="time" id="deliveryTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryFee">Delivery Fee (Rs.)</label>
+                        <input type="number" id="deliveryFee" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <h3>Menu<i class="ri-draggable"></i></h3>
+            <label for="menuSearch"><span id="searchicon"><i class="ri-search-line"></i></span> Search</label>
+            <input id="menuSearch" class="search" type="search" placeholder="Search menu items (e.g., tea, burger)" />
+
+            <div id="menuList" class="menu-grid">
+                <!-- item structure: contains quantity + note input -->
+                <div class="item" data-name="tea">
+                    <label for="tea">Tea<i class="ri-cup-fill"></i> <span>(Rs.40 / cup)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="tea" min="0" value="0">
+                        <input class="item-note" id="note_tea" type="text" placeholder="Note (e.g., less sugar)">
+                    </div>
+                </div>
+
+                <div class="item" data-name="samosa">
+                    <label for="samosa">Samosa <span>(Rs.30 / pc)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="samosa" min="0" value="0">
+                        <input class="item-note" id="note_samosa" type="text" placeholder="Note">
+                    </div>
+                </div>
+
+                <div class="item" data-name="biscuit">
+                    <label for="biscuit">Biscuit <i class="fa-solid fa-cookie"></i><span>(Rs.20 / pack)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="biscuit" min="0" value="0">
+                        <input class="item-note" id="note_biscuit" type="text" placeholder="Note">
+                    </div>
+                </div>
+
+                <div class="item" data-name="sandwich">
+                    <label for="sandwich">Sandwich<i class="ri-bread-fill"></i> <span>(Rs.120 / pc)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="sandwich" min="0" value="0">
+                        <input class="item-note" id="note_sandwich" type="text" placeholder="Note (e.g., no mayo)">
+                    </div>
+                </div>
+
+                <div class="item" data-name="burger">
+                    <label for="burger">Burger <i class="fa-solid fa-burger"></i> <span>(Rs.100 / pc)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="burger" min="0" value="0">
+                        <input class="item-note" id="note_burger" type="text" placeholder="Note">
+                    </div>
+                </div>
+
+                <div class="item" data-name="shawarma">
+                    <label for="shawarma">Shawarma <span>(Rs.150 / pc)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="shawarma" min="0" value="0">
+                        <input class="item-note" id="note_shawarma" type="text" placeholder="Note">
+                    </div>
+                </div>
+
+                <div class="item" data-name="kasta_quarter">
+                    <label for="kasta_quarter">Kasta <span>(Rs.100 / 1⁄4)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="kasta_quarter" min="0" value="0">
+                        <input class="item-note" id="note_kasta_quarter" type="text" placeholder="Note">
+                    </div>
+                </div>
+
+                <div class="item" data-name="milk_glass">
+                    <label for="milk_glass">Milk (Glass)<i class="ri-goblet-2-fill"></i> <span>(Rs.50 /
+                            glass)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="milk_glass" min="0" value="0">
+                        <input class="item-note" id="note_milk_glass" type="text" placeholder="Note">
+                    </div>
+                </div>
+
+                <div class="item" data-name="gulab_jamun_quarter">
+                    <label for="gulab_jamun_quarter">Gulab Jamun <span>(Rs.150 / 1⁄4)</span></label>
+                    <div class="item-controls">
+                        <input type="number" id="gulab_jamun_quarter" min="0" value="0">
+                        <input class="item-note" id="note_gulab_jamun_quarter" type="text" placeholder="Note">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid two">
+                <div class="form-group">
+                    <label for="discountCode"><i class="ri-discount-percent-line"></i> Discount Code</label>
+                    <input id="discountCode" type="text" placeholder="Enter code (e.g., KAS10)" />
+                    <small id="discountMsg" class="muted"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceCharge">Service charge (%)</label>
+                    <div style="display:flex; gap:8px; align-items:center;">
+                        <input id="serviceCharge" type="number" min="0" max="100" value="0" style="width:100px;">
+                        <label style="font-weight:600"><input id="applyService" type="checkbox"> Apply</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentMode">Payment Mode <i class="ri-refund-2-line"></i></label>
+                <select id="paymentMode" required>
+                    <option value="">Select payment mode</option>
+                    <option value="cash">Cash</option>
+                    <option value="jazzcash">Jazzcash</option>
+                    <option value="easypaisa">Easypaisa</option>
+                    <option value="card">Card</option>
+                </select>
+            </div>
+
+            <div class="terms">
+                <label class="checkbox">
+                    <input type="checkbox" id="acceptTerms" />
+                    <span>I accept the <a href="#" id="openTerms">Terms & Conditions</a>.</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn primary" id="generateBtn" disabled>Generate Bill <i
+                    class="ri-bill-line"></i></button>
+        </form>
+
+        <section id="billSection" class="card hidden">
+            <h2>Bill Summary <i class="ri-shopping-cart-fill"></i></h2>
+            <div id="billDetails"></div>
+            <div class="btn-row">
+                <button class="btn" onclick="window.print()">Print Bill <i class="fa-solid fa-print"></i></button>
+                <button class="btn ghost" id="clearOrderBtn">Clear Current Order <i class="fa-solid fa-broom"></i></button>
+            </div>
+        </section>
+        <!-- Going to up code -->
+        <section id="gohomesection">
+            <div id="gohomebutton" class="btns">
+                <a href="#header"><i class="ri-arrow-up-wide-line"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p><i class="ri-reserved-line"></i> 2025 KAS Cafe — With love<i class="ri-heart-3-fill"></i> for good food <i
+                class="ri-restaurant-line"></i></p>
+    </footer>
+
+    <!-- Permission modal -->
+    <div id="permissionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="permTitle">
+        <div class="modal-box">
+            <h3 id="permTitle">Allow Saving Order History?</h3>
+            <p>We can save your order history on this device so you can view receipts later. Do you allow this?</p>
+            <div class="btn-row">
+                <button class="btn primary" id="allowHistory">Allow</button>
+                <button class="btn ghost" id="denyHistory">Don’t Allow</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms modal -->
+    <div id="termsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+        <div class="modal-box">
+            <h3 id="termsTitle">Terms & Conditions</h3>
+            <div class="terms-body">
+                <ul>
+                    <li>Prices are inclusive of applicable taxes unless stated.</li>
+                    <li>Delivery time depends on distance and kitchen load.</li>
+                    <li>Orders once prepared are non-refundable.</li>
+                    <li>For delivery, incorrect address/phone may cause delays.</li>
+                    <li>Your data stays on this device unless you clear it.</li>
+                </ul>
+            </div>
+            <div class="btn-row">
+                <button class="btn primary" id="closeTerms">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
