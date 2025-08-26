@@ -57,7 +57,7 @@ function render(list) {
         </div>
         <div class="btn-row">
           <button class="btn ghost" data-print="${id}">Print</button>
-          <button class="btn ghost" data-delete="${id}">Delete</button>
+          <button class="btn ghost delbtn" data-delete="${id}">Delete</button>
         </div>
       </div>
       <div class="history-body">
